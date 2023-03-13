@@ -19,11 +19,14 @@ export class AppComponent {
 
   // public _overlayRef!: OverlayRef | null;
 
-  constructor() // private viewContainerRef: ViewContainerRef // private overlay: Overlay,
-  {}
+  constructor() {} // private viewContainerRef: ViewContainerRef // private overlay: Overlay,
 
   openDialog() {
     this.dialogTemplate.openDialog();
+  }
+
+  closeDialog() {
+    this.dialogTemplate.closeDialog();
   }
 
   // openDialog() {
