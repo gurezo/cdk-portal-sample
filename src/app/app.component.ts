@@ -7,32 +7,36 @@ import {
 
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
+  // @ViewChild('dialogTemplate') dialogTemplate!: TemplateRef<any>;
+  @ViewChild('dialogTemplate') dialogTemplate!: DialogComponent;
 
-  public _overlayRef!: OverlayRef | null;
+  // public _overlayRef!: OverlayRef | null;
 
-  constructor(
-    private overlay: Overlay,
-    private viewContainerRef: ViewContainerRef
-  ) {}
+  constructor() // private viewContainerRef: ViewContainerRef // private overlay: Overlay,
+  {}
 
   openDialog() {
-    if (this._overlayRef) return;
-
-    this._overlayRef = this.overlay.create();
-
-    this._overlayRef.attach(
-      new TemplatePortal(this.dialogTemplate, this.viewContainerRef)
-    );
+    this.dialogTemplate.openDialog();
   }
 
-  closeDialog() {
-    this._overlayRef && (this._overlayRef.dispose(), (this._overlayRef = null));
-  }
+  // openDialog() {
+  //   if (this._overlayRef) return;
+
+  //   this._overlayRef = this.overlay.create();
+
+  //   this._overlayRef.attach(
+  //     new TemplatePortal(this.dialogTemplate, this.viewContainerRef)
+  //   );
+  // }
+
+  // closeDialog() {
+  //   this._overlayRef && (this._overlayRef.dispose(), (this._overlayRef = null));
+  // }
 }
